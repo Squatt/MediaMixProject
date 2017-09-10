@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import feedparser
 
-from utils import pretty_print
+from apiMedia.utils import pretty_print
 
 
 class BaseRSSParser(ABC):
