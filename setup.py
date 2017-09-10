@@ -14,6 +14,7 @@ setup(
         "console_scripts": ["apimedia-server=apiMedia.FluxRSS.Server:start"]
     },
     install_requires=[
+        "feedparser",
         "Flask>=0.12",
     ],
 )
