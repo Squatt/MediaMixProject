@@ -1,6 +1,6 @@
 import json
 import requests
-
+import re
 
 def pretty_print(iterable):
     """Prints an iterable object with a newline after each element
@@ -29,3 +29,15 @@ def get_nouns(txt):
                 else:
                     nouns[word] = 1
     return nouns
+
+
+def dirty_yt_search(keyword):
+    """Searches for the specified keyword on YouTube and returns the first
+    video result.
+    """
+    yt_url = 'https://www.youtube.com/results'
+    search_args = {'search_query': keyword}
+
+    resp = requests.get(yt_url, search_args)
+    search_results = re.findall(r'href=\"\/watch\?v=(.{11})', resp.text)
+    return 'http://www.youtube.com/watch?v=' + search_results[0]

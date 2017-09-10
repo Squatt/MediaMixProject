@@ -5,7 +5,7 @@ import json
 from apiMedia.FluxRSS.imports.Server_IMPORTS import *
 from apiMedia.FluxRSS.FluxRSSManager import *
 from apiMedia.RSSParser import LeMondeParser, MediaPartParser
-from apiMedia.utils import get_nouns
+from apiMedia.utils import get_nouns, dirty_yt_search
 
 app = Flask(__name__)
 
@@ -15,12 +15,23 @@ parsers = [
     MediaPartParser,
 ]
 
+def get_hottest_noun(nouns={}):
+    highest = 0
+    noun = None
+    for k, v in nouns.items():
+        if v > highest and len(k) > 2:
+            highest = v
+            noun = k
+    return noun
+
 def get_titles():
     titles = []
     for parser in parsers:
         titles.extend(parser().get_titles())
     text = ' '.join(titles)
-    return json.dumps(titles) + json.dumps(get_nouns(text))
+    nouns = get_nouns(text)
+    hot = get_hottest_noun(nouns)
+    return dirty_yt_search(hot if hot else 'toto')
 
 ## Route flux RSS Manager ##
 app.add_url_rule('/getActualities', 'getActualities',
