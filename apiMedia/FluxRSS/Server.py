@@ -1,10 +1,11 @@
-#!/usr/bin/python3
-#-*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
-from imports.Server_IMPORTS import *
-from FluxRSSManager import *
+from apiMedia.FluxRSS.imports.Server_IMPORTS import *
+from apiMedia.FluxRSS.FluxRSSManager import *
+
 
 app = Flask(__name__)
+
 
 ## Route flux RSS Manager ##
 app.add_url_rule('/getActualities', 'getActualities', GetActualities, methods=['GET'])

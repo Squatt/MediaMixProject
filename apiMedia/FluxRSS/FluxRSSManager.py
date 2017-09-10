@@ -1,7 +1,8 @@
-#!/usr/bin/python3
-#-*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
-from imports.FluxRSSManager_IMPORTS import *
+
+from apiMedia.FluxRSS.imports.FluxRSSManager_IMPORTS import *
+
 
 def GetActualities():
     return json.dumps("API call succed !")
