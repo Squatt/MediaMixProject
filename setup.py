@@ -16,5 +16,6 @@ setup(
     install_requires=[
         "feedparser",
         "Flask>=0.12",
+        "requests",
     ],
 )
