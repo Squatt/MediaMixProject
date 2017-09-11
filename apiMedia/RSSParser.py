@@ -47,3 +47,18 @@ class MediaPartParser(BaseRSSParser):
     """
 
     url = 'https://www.mediapart.fr/journal/podcast/chronique/rss'
+
+class ExpressParser(BaseRSSParser):
+    """Express feed parser.
+    """
+    url = 'http://www.lexpress.fr/rss/alaune.xml'
+
+class LeParisienParser(BaseRSSParser):
+    """Le Parisien feed parser.
+    """
+    url = 'http://www.leparisien.fr/une/rss.xml#xtor=RSS-1481423633'
+
+class RadioCanadaParser(BaseRSSParser):
+    """Radio canada feed parser.
+    """
+    url = 'http://rss.radio-canada.ca/fils/nouvelles/nouvelles.xml'

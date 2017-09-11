@@ -1,6 +1,7 @@
 import json
 import requests
 import re
+import urllib.parse
 
 def pretty_print(iterable):
     """Prints an iterable object with a newline after each element
@@ -13,7 +14,7 @@ def get_nouns(txt):
     """Returns a dict of all the nouns in a text and how often they appear.
     """
     query = 'https://api.textgain.com/1/tag?q='
-    query += txt
+    query += urllib.parse.quote(txt, safe='')
     query += '&lang=fr&key=***'
     resp = requests.get(query)
 
@@ -28,6 +29,7 @@ def get_nouns(txt):
                     nouns[word] += 1
                 else:
                     nouns[word] = 1
+    print(nouns)
     return nouns
 
 
@@ -39,5 +41,6 @@ def dirty_yt_search(keyword):
     search_args = {'search_query': keyword}
 
     resp = requests.get(yt_url, search_args)
+    print(resp.text)
     search_results = re.findall(r'href=\"\/watch\?v=(.{11})', resp.text)
     return 'http://www.youtube.com/watch?v=' + search_results[0]
