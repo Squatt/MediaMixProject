@@ -35,6 +35,7 @@ def get_titles():
     print(hot);
     return hot + " : " + dirty_yt_search(hot if hot else 'toto')
 
+
 ## Route flux RSS Manager ##
 app.add_url_rule('/getActualities', 'getActualities',
                  get_titles, methods=['GET'])
