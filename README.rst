@@ -19,9 +19,9 @@ If you don't want to install the package system-wide, we recommend to use
 ``virtualenv``. Type these commands before ``pip install`` to use
 ``virtualenv``:
 
-..code:: raw
-	 ``$ virtualenv venv -p /usr/bin/python3
-	 $ source venv/bin/activate``
+..code:: console
+    $ virtualenv venv -p /usr/bin/python3
+    $ source venv/bin/activate
 
 
 Starting the API
